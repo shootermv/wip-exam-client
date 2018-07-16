@@ -1,6 +1,7 @@
 # exam-wip
 
-React client demonstartes it can fetch data from python API.
+Exam project for WIP company<br>
+React client demonstartes it can fetch data from python API.<br>
 This project was bootstrapped with [Create React App]  (https://github.com/facebookincubator/create-react-app).
 
 
