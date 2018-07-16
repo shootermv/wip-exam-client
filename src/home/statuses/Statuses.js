@@ -32,7 +32,8 @@ export default class Statuses extends Component {
         return (
             <div className="col-sm">
                 {this.state.loading && <Spinner/>}
-                {!this.state.loading && <div className="card" >
+                {(!this.state.loading && this.state.statuses.length===0) && <span>Click On User To See Tweets</span>}
+                {(!this.state.loading && this.state.statuses.length > 0) && <div className="card" >
                     <ul className="list-group list-group-flush">
                     {this.state.statuses.map((status) => (<li className="list-group-item" key={status.id}>{status.text}</li>))}
                     </ul>
