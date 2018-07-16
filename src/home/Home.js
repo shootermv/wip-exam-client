@@ -1,14 +1,13 @@
 import React, { Component, PropTypes } from 'react';
 import Users from './users/Users';
 import Statuses from './statuses/Statuses';
-
+import Search from './search/Search';
 
 export default class Home extends Component {
   constructor(props) {
     super(props)
-    this.textInput = React.createRef();
-    this.handleClick = this.handleClick.bind(this);
     this.handleUserSelected = this.handleUserSelected.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
   }
 
 
@@ -27,7 +26,6 @@ export default class Home extends Component {
 
 
   fetchUsers(term) {
-
     this.setState({ selectedUser: null, users:[] });
     fetch(`http://localhost:8000/app/users/?q=${term || ''}`).then(response=>response.json())
     .then(users => {
@@ -36,28 +34,24 @@ export default class Home extends Component {
   }
   
 
-  handleClick(e) {
-    this.fetchUsers(this.textInput.current.value);
+  handleSearch(term) {
+    this.fetchUsers(term);
   }
 
 
   render () {
     return (
       <div className="container-fluid">
+      
         <div className="col-md-12">
-          <div className="input-group col-md-12">
-            <input className="form-control py-2" type="search" placeholder="search" ref={this.textInput}/>
-            <span className="input-group-append">
-              <button className="btn btn-outline-secondary" onClick={this.handleClick} type="button">
-                  <i className="fa fa-search"></i>
-              </button>
-            </span>
-          </div>
+
+          <Search onSearch={(term) => this.handleSearch(term)}/> 
 
           <div className="row margin-up">
             <Users users={ this.state.users } userSelected={(user) => this.handleUserSelected(user)}/>
             <Statuses selectedUser={this.state.selectedUser}/>
           </div>
+
         </div>
       </div>
     );
