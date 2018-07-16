@@ -1,4 +1,4 @@
-# exam-wip
+# exam-wip-client
 
 Exam project for WIP company<br>
 React client demonstartes it can fetch data from python API.<br>
