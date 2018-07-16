@@ -7,7 +7,7 @@ This project was bootstrapped with [Create React App]  (https://github.com/faceb
 
 ## How To Install
 
-After clone (git clone https://github.com/shootermv/wip-exam-client.git), you can run:
+After clone (`git clone https://github.com/shootermv/wip-exam-client.git`), you can run:
 
 ### `npm install`
 
