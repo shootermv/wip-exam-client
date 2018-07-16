@@ -17,3 +17,16 @@ i.fa-spinner{font-size:3.6em;}
 .logo{
   height:54px;
 }
+
+.user-img{
+  border-radius: 50%;
+}
+.user-details{
+  margin:8px 0  0 10px;
+}
+
+.input-group-append .btn{
+  padding:12px;
+  border-top-left-radius: 0%;
+  border-bottom-left-radius: 0%;
+}

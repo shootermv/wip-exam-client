@@ -46,7 +46,7 @@ export default class Search extends Component {
 
         return (
             <div className="input-group">
-               {/* <input className="form-control py-2" type="search" placeholder="search" onChange={this.termChanged}/> */}
+               
                <Autosuggest 
                suggestions={suggestions}
                onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
