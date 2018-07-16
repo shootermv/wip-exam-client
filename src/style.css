@@ -7,3 +7,8 @@ h1, p {
 .margin-up{
   margin-top: 20px;
 }
+.list-group-item{
+  cursor: pointer;
+}
+i.fa-spinner{font-size:3.6em;}
+.spinner-container{padding-top:34px;}

@@ -1,16 +1,46 @@
 import React, { Component, PropTypes } from 'react';
+import Users from './users/Users';
+import Statuses from './statuses/Statuses';
 
 
-export default class SearchBar extends Component {
+export default class Home extends Component {
   constructor(props) {
     super(props)
     this.textInput = React.createRef();
     this.handleClick = this.handleClick.bind(this);
+    this.handleUserSelected = this.handleUserSelected.bind(this);
   }
+
+
+  state = {
+    users: [],
+    selectedUser: null
+  }
+
+  componentDidMount() {
+   this.fetchUsers();
+  }
+
+  handleUserSelected(selectedUser) {
+    this.setState({ selectedUser });
+  }
+
+
+  fetchUsers(term) {
+
+    this.setState({ selectedUser: null, users:[] });
+    fetch(`http://localhost:8000/app/users/?q=${term || ''}`).then(response=>response.json())
+    .then(users => {
+        this.setState({ users });
+    });
+  }
+  
+
   handleClick(e) {
-    console.log(this.textInput.current.value)
-   // this.props.onChange(e.target.value);
+    this.fetchUsers(this.textInput.current.value);
   }
+
+
   render () {
     return (
       <div className="container-fluid">
@@ -25,12 +55,8 @@ export default class SearchBar extends Component {
           </div>
 
           <div className="row margin-up">
-            <div className="col-sm jumbotron">
-              One of two columns
-            </div>
-            <div className="col-sm">
-              One of two columns
-            </div>
+            <Users users={ this.state.users } userSelected={(user) => this.handleUserSelected(user)}/>
+            <Statuses selectedUser={this.state.selectedUser}/>
           </div>
         </div>
       </div>
