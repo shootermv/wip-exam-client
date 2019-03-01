@@ -27,7 +27,7 @@ export default class Home extends Component {
 
   fetchUsers(term) {
     this.setState({ selectedUser: null, users:[] });
-    fetch(`http://localhost:8000/app/users/?q=${term || ''}`).then(response=>response.json())
+    fetch(`${process.env.REACT_APP_API_URL}/app/users/?q=${term || ''}`).then(response=>response.json())
     .then(users => {
         this.setState({ users });
     });

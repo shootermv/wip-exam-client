@@ -24,7 +24,7 @@ export default class Search extends Component {
     }
 
     onSuggestionsFetchRequested = ({ value }) => {
-        fetch(`http://localhost:8000/app/users/?q=${value}`)
+        fetch(`${process.env.REACT_APP_API_URL}/app/users/?q=${value}`)
           .then(response => response.json())
           .then(data => this.setState({ suggestions: data }))
     }

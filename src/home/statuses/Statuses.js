@@ -21,11 +21,9 @@ export default class Statuses extends Component {
             return;
         }
         this.setState({ statuses: [], loading: true });
-        fetch(`http://localhost:8000/app/statuses/?screenname=${this.props.selectedUser.screen_name}`)
-        .then(response=>response.json())  
-        .then(statuses => {
-            this.setState({ statuses, loading:false });
-        }); 
+        fetch(`${process.env.REACT_APP_API_URL}/app/statuses/?screenname=${this.props.selectedUser.screen_name}`)
+        .then(data => data.json())  
+        .then( statuses => this.setState({ statuses, loading:false }));
     }
 
     render() {
